@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const POSTER =
+  'https://customer-wa9cpywo3l4jte5c.cloudflarestream.com/383458c49ff6354e94960a42d7761cc3/thumbnails/thumbnail.jpg?time=&height=600';
+
+const {
+  title = 'dwntwnphx.com | Downtown Phoenix, AZ • DTPHX — $50,000',
+  description = 'dwntwnphx.com is the downtown-first sister to phxdwntwn.com — the short domain for Downtown Phoenix. Offered at $50,000.',
+  ogImage = POSTER,
+  canonical = 'https://dwntwnphx.com/',
+} = Astro.props;
+
+const siteName = 'dwntwnphx.com';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Downtown Phoenix, DTPHX, dwntwnphx, Phoenix downtown, Roosevelt Row, CityScape" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href={canonical} />
+    <meta name="google-site-verification" content="tUdonTNCMK6H-ZlvDThIa7hGgWp0znPm5qqK4mdTCcQ" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0f0d0c" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": siteName,
+      "url": "https://dwntwnphx.com",
+      "description": description
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": title,
+      "description": description,
+      "url": canonical,
+      "about": {
+        "@type": "Place",
+        "name": "Downtown Phoenix",
+        "alternateName": "DTPHX",
+        "address": { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" }
+      },
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "dwntwnphx.com",
+      "description": "Downtown-first premium domain for Downtown Phoenix. Sister to phxdwntwn.com.",
+      "url": "https://dwntwnphx.com",
+      "brand": { "@type": "Brand", "name": "dwntwnphx.com" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://dwntwnphx.com/#acquisition",
+        "price": "50000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "seller": { "@type": "Organization", "name": "Desert Rich", "email": "sales@desertrich.com" }
+      }
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot />
+  </body>
+</html>
