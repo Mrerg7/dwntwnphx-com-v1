@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const STREAM_SRC =
+  'https://customer-wa9cpywo3l4jte5c.cloudflarestream.com/383458c49ff6354e94960a42d7761cc3/iframe?muted=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-wa9cpywo3l4jte5c.cloudflarestream.com%2F383458c49ff6354e94960a42d7761cc3%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false';
+---
+
+<Layout>
+  <Header />
+
+  <main class="flex-1">
+    <section class="relative bg-dusk-950">
+      <div class="relative w-full" style="padding-top: 54.32098765432099%;">
+        <iframe
+          src={STREAM_SRC}
+          title="dwntwnphx.com Downtown Phoenix hero video"
+          loading="lazy"
+          style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+          allowfullscreen="true"
+        ></iframe>
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk-950 via-dusk-950/55 to-dusk-950/20"></div>
+        <div class="absolute inset-0 flex items-end">
+          <div class="container-narrow w-full pb-6 pt-16 sm:pb-12 sm:pt-20">
+            <p class="mb-3 text-[10px] font-semibold uppercase tracking-widestx text-ember-400 sm:text-xs">
+              Downtown Phoenix · DTPHX · Sister to phxdwntwn.com
+            </p>
+            <h1 class="font-display text-4xl font-bold leading-none text-white sm:text-6xl lg:text-7xl">
+              dwntwn<span class="text-ember-400">phx</span>
+            </h1>
+            <p class="mt-4 max-w-xl text-sm leading-relaxed text-stone-200 sm:mt-5 sm:text-lg">
+              Downtown first. Phoenix second. The short address for the urban core.
+            </p>
+            <div class="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-3">
+              <a href="#opportunity" class="btn-primary pointer-events-auto">The opportunity</a>
+              <a href="#acquisition" class="btn-secondary pointer-events-auto">$50,000</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opportunity" class="section-padding bg-stone-50">
+      <div class="container-narrow max-w-3xl">
+        <p class="text-[11px] font-semibold uppercase tracking-widestx text-ember-600">The opportunity</p>
+        <h2 class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">The sister name, downtown-first</h2>
+        <div class="mt-6 space-y-4 text-sm leading-relaxed text-stone-700 sm:text-base">
+          <p>
+            <a href="https://phxdwntwn.com" class="font-medium text-ember-700 underline-offset-2 hover:underline">phxdwntwn.com</a> leads with the city code.
+            <strong class="text-dusk-950">dwntwnphx.com</strong> leads with the neighborhood. Same core. Different search path.
+          </p>
+          <p>
+            Downtown Phoenix — DTPHX — is Roosevelt Row, Heritage Square, CityScape, light rail, Chase Field, and the warehouse districts.
+            This hostname is that phrase compressed: downtown + PHX.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="place" class="section-padding bg-white">
+      <div class="container-narrow">
+        <div class="max-w-2xl">
+          <p class="text-[11px] font-semibold uppercase tracking-widestx text-ember-600">The core</p>
+          <h2 class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">Where the city actually walks</h2>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="card">
+            <h3 class="font-display text-xl font-bold text-dusk-950">Roosevelt Row</h3>
+            <p class="mt-2 text-sm leading-relaxed text-stone-600">Murals, galleries, and First Fridays — the creative street that made downtown a destination.</p>
+          </article>
+          <article class="card">
+            <h3 class="font-display text-xl font-bold text-dusk-950">Heritage Square</h3>
+            <p class="mt-2 text-sm leading-relaxed text-stone-600">Rosson House, Victorian fabric, and the dining rooms that put Phoenix on a national map.</p>
+          </article>
+          <article class="card">
+            <h3 class="font-display text-xl font-bold text-dusk-950">Central / CityScape</h3>
+            <p class="mt-2 text-sm leading-relaxed text-stone-600">Mixed-use core, light-rail hub, events, and the office-to-residential conversion story.</p>
+          </article>
+          <article class="card">
+            <h3 class="font-display text-xl font-bold text-dusk-950">Sports district</h3>
+            <p class="mt-2 text-sm leading-relaxed text-stone-600">Chase Field and Footprint Center — nights when downtown is the whole metro’s living room.</p>
+          </article>
+          <article class="card">
+            <h3 class="font-display text-xl font-bold text-dusk-950">Warehouse & innovation</h3>
+            <p class="mt-2 text-sm leading-relaxed text-stone-600">Adaptive reuse, studios, and the next layer of residential towers on old industrial blocks.</p>
+          </article>
+          <article class="card">
+            <h3 class="font-display text-xl font-bold text-dusk-950">Light rail</h3>
+            <p class="mt-2 text-sm leading-relaxed text-stone-600">The spine that makes downtown reachable without a parking hunt — from campus to the ballpark.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="uses" class="section-padding bg-stone-50">
+      <div class="container-narrow grid gap-10 lg:grid-cols-2 lg:items-start">
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-widestx text-ember-600">Ideal uses</p>
+          <h2 class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">Who this name is for</h2>
+          <ul class="mt-8 space-y-4 text-sm text-stone-700 sm:text-base">
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Infill real estate and downtown development</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Arts, First Fridays, and cultural programming</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Dining, nightlife, and local directories</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Sports, hospitality, and event brands</span></li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Downtown media and civic storytelling</span></li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
+          <dl class="space-y-5">
+            <div class="flex items-baseline justify-between gap-4 border-b border-stone-100 pb-4">
+              <dt class="text-sm text-stone-500">Reads as</dt>
+              <dd class="font-display text-xl font-bold text-dusk-950">Downtown PHX</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-b border-stone-100 pb-4">
+              <dt class="text-sm text-stone-500">Place</dt>
+              <dd class="font-display text-xl font-bold text-dusk-950">DTPHX</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4 border-b border-stone-100 pb-4">
+              <dt class="text-sm text-stone-500">Sister</dt>
+              <dd class="font-display text-xl font-bold text-dusk-950">phxdwntwn.com</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <dt class="text-sm text-stone-500">Offer</dt>
+              <dd class="font-display text-xl font-bold text-ember-600">$50,000</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-stone-200 bg-white py-10 sm:py-12">
+      <div class="container-narrow text-center">
+        <p class="mx-auto max-w-2xl text-xs leading-relaxed text-stone-500 sm:text-sm">
+          Information presented is for demonstration and educational purposes only and does not constitute an offer of real estate or local services.
+          The domain is offered at the stated asking price; terms are subject to a written agreement.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
