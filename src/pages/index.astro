@@ -11,32 +11,32 @@ const STREAM_SRC =
   <Header />
 
   <main class="flex-1">
-    <section class="relative bg-dusk-950">
-      <div class="relative w-full" style="padding-top: 54.32098765432099%;">
+    <section class="relative overflow-hidden bg-dusk-950">
+      <div class="relative w-full" style="aspect-ratio: 1.84 / 1;">
         <iframe
           src={STREAM_SRC}
           title="dwntwnphx.com Downtown Phoenix hero video"
-          loading="lazy"
           style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
           allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
           allowfullscreen="true"
         ></iframe>
-        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk-950 via-dusk-950/55 to-dusk-950/20"></div>
-        <div class="absolute inset-0 flex items-end">
-          <div class="container-narrow w-full pb-6 pt-16 sm:pb-12 sm:pt-20">
-            <p class="mb-3 text-[10px] font-semibold uppercase tracking-widestx text-ember-400 sm:text-xs">
-              Downtown Phoenix · DTPHX · Sister to phxdwntwn.com
-            </p>
-            <h1 class="font-display text-4xl font-bold leading-none text-white sm:text-6xl lg:text-7xl">
-              dwntwn<span class="text-ember-400">phx</span>
-            </h1>
-            <p class="mt-4 max-w-xl text-sm leading-relaxed text-stone-200 sm:mt-5 sm:text-lg">
-              Downtown first. Phoenix second. The short address for the urban core.
-            </p>
-            <div class="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-3">
-              <a href="#opportunity" class="btn-primary pointer-events-auto">The opportunity</a>
-              <a href="#acquisition" class="btn-secondary pointer-events-auto">$50,000</a>
-            </div>
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk-950 via-dusk-950/30 to-dusk-950/10"></div>
+      </div>
+
+      <div class="relative bg-dusk-950 sm:absolute sm:inset-0 sm:flex sm:items-end sm:bg-transparent">
+        <div class="container-narrow w-full pb-8 pt-6 sm:pb-12 sm:pt-0">
+          <p class="mb-3 text-[10px] font-semibold uppercase tracking-widestx text-ember-400 sm:text-xs">
+            Downtown Phoenix · DTPHX · Sister to phxdwntwn.com
+          </p>
+          <h1 class="font-display text-4xl font-bold leading-none text-white sm:text-6xl lg:text-7xl">
+            dwntwn<span class="text-ember-400">phx</span>
+          </h1>
+          <p class="mt-4 max-w-xl text-sm leading-relaxed text-stone-200 sm:mt-5 sm:text-lg">
+            Downtown first. Phoenix second. The short address for the urban core.
+          </p>
+          <div class="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-3">
+            <a href="#opportunity" class="btn-primary">The opportunity</a>
+            <a href="#acquisition" class="btn-secondary">$50,000</a>
           </div>
         </div>
       </div>

@@ -12,6 +12,15 @@ export default {
         display: ['Playfair Display', 'Georgia', 'serif'],
       },
       letterSpacing: { widestx: '0.2em' },
+      animation: {
+        'pulse-price': 'pulse-price 2.4s ease-in-out infinite',
+      },
+      keyframes: {
+        'pulse-price': {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+          '50%': { opacity: '0.55', transform: 'scale(1.04)' },
+        },
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
