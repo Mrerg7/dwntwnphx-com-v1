@@ -5,51 +5,128 @@ import Footer from '../components/Footer.astro';
 
 const STREAM_SRC =
   'https://customer-wa9cpywo3l4jte5c.cloudflarestream.com/383458c49ff6354e94960a42d7761cc3/iframe?muted=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-wa9cpywo3l4jte5c.cloudflarestream.com%2F383458c49ff6354e94960a42d7761cc3%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&controls=false';
+const POSTER =
+  'https://customer-wa9cpywo3l4jte5c.cloudflarestream.com/383458c49ff6354e94960a42d7761cc3/thumbnails/thumbnail.jpg?time=&height=600';
+
+const faqs = [
+  {
+    q: 'How do I buy dwntwnphx.com?',
+    a: 'Click “Buy now” to email sales@desertrich.com with a $50,000 purchase request, or choose “Make an offer” to propose terms. Transfer is completed via a licensed escrow service with a written purchase agreement and a secure registrar push.',
+  },
+  {
+    q: 'Why dwntwnphx.com instead of phxdwntwn.com?',
+    a: 'phxdwntwn.com leads with the city code (PHX first). dwntwnphx.com leads with the neighborhood (downtown first) — a different type-in and search path for the same urban core. Many buyers secure both sisters to own the full DTPHX search surface.',
+  },
+  {
+    q: 'What can I use this premium domain for?',
+    a: 'Infill real estate and downtown development, arts and First Fridays programming, dining and nightlife directories, sports and hospitality brands, and downtown media or civic storytelling. Short, local, and memorable beats generic keyword domains.',
+  },
+  {
+    q: 'How is the transfer secured?',
+    a: 'Payment is held by a neutral licensed escrow provider, the domain is pushed to your registrar account, and funds release only after you confirm control. You receive a written bill of sale for the domain asset.',
+  },
+  {
+    q: 'Can I pay in installments or via a broker?',
+    a: 'Yes — mention installments or broker representation in your inquiry and an agent will propose escrow-held payment terms. Serious inquiries receive a response within 1–2 business days.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dwntwnphx.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Opportunity', item: 'https://dwntwnphx.com/#opportunity' },
+    { '@type': 'ListItem', position: 3, name: 'Acquisition', item: 'https://dwntwnphx.com/#acquisition' },
+  ],
+};
 ---
 
 <Layout>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <Header />
 
-  <main class="flex-1">
-    <section class="relative overflow-hidden bg-dusk-950">
+  <main id="main" class="flex-1">
+    <section class="relative overflow-hidden bg-dusk-950" aria-label="dwntwnphx.com introduction">
       <div class="relative w-full" style="aspect-ratio: 1.84 / 1;">
+        <img
+          src={POSTER}
+          alt="Downtown Phoenix skyline preview"
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+          width="1200"
+          height="652"
+        />
         <iframe
           src={STREAM_SRC}
           title="dwntwnphx.com Downtown Phoenix hero video"
           style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
           allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
           allowfullscreen="true"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
         ></iframe>
         <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk-950 via-dusk-950/30 to-dusk-950/10"></div>
       </div>
 
       <div class="relative bg-dusk-950 sm:absolute sm:inset-0 sm:flex sm:items-end sm:bg-transparent">
         <div class="container-narrow w-full pb-8 pt-6 sm:pb-12 sm:pt-0">
-          <p class="mb-3 text-[10px] font-semibold uppercase tracking-widestx text-ember-400 sm:text-xs">
+          <nav aria-label="Breadcrumb" class="mb-3 text-xs text-stone-400 sm:text-sm">
+            <ol class="flex flex-wrap gap-1.5">
+              <li><a href="/" class="hover:text-ember-400">Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="#opportunity" class="hover:text-ember-400">Opportunity</a></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" class="text-stone-300">dwntwnphx.com — $50,000</li>
+            </ol>
+          </nav>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-widestx text-ember-400 sm:text-sm">
             Downtown Phoenix · DTPHX · Sister to phxdwntwn.com
           </p>
-          <h1 class="font-display text-4xl font-bold leading-none text-white sm:text-6xl lg:text-7xl">
-            dwntwn<span class="text-ember-400">phx</span>
+          <h1 class="font-display text-5xl font-bold leading-none text-white sm:text-6xl lg:text-7xl">
+            dwntwn<span class="text-ember-400">phx</span><span class="text-white">.com</span>
           </h1>
-          <p class="mt-4 max-w-xl text-sm leading-relaxed text-stone-200 sm:mt-5 sm:text-lg">
-            Downtown first. Phoenix second. The short address for the urban core.
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-stone-200 sm:mt-5 sm:text-lg">
+            Downtown first. Phoenix second. The premium domain for the urban core — buy dwntwnphx.com for $50,000 via secure escrow.
           </p>
-          <div class="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-3">
-            <a href="#opportunity" class="btn-primary">The opportunity</a>
-            <a href="#acquisition" class="btn-secondary">$50,000</a>
+          <div class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+            <a href="#acquisition" class="btn-primary" data-cta="hero-buy">Buy now — $50,000</a>
+            <a href="#opportunity" class="btn-secondary" data-cta="hero-opportunity">The opportunity</a>
           </div>
+          <p class="mt-4 text-sm text-stone-400">🔒 Escrow-protected transfer · Written agreement · 1–2 day response</p>
         </div>
       </div>
     </section>
 
-    <section id="opportunity" class="section-padding bg-stone-50">
+    {/* Trust strip */}
+    <section class="border-b border-stone-200 bg-white" aria-label="Why buy with confidence">
+      <div class="container-narrow grid grid-cols-1 gap-3 py-6 text-center text-sm sm:grid-cols-3 sm:text-base">
+        <p class="fade-in">🔒 <strong>Escrow-secured</strong> — funds release on transfer</p>
+        <p class="fade-in">⚡ <strong>1 of 1 asset</strong> — exclusive .com, DTPHX exact</p>
+        <p class="fade-in">🤝 <strong>Sister pair</strong> — own it with <a class="font-medium text-ember-700 underline-offset-2 hover:underline" href="https://phxdwntwn.com">phxdwntwn.com</a></p>
+      </div>
+    </section>
+
+    <section id="opportunity" class="section-padding bg-stone-50" aria-labelledby="opportunity-heading">
       <div class="container-narrow max-w-3xl">
-        <p class="text-[11px] font-semibold uppercase tracking-widestx text-ember-600">The opportunity</p>
-        <h2 class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">The sister name, downtown-first</h2>
-        <div class="mt-6 space-y-4 text-sm leading-relaxed text-stone-700 sm:text-base">
+        <p class="text-xs font-semibold uppercase tracking-widestx text-ember-600">The opportunity</p>
+        <h2 id="opportunity-heading" class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">The sister name, downtown-first</h2>
+        <div class="mt-6 space-y-4 text-base leading-relaxed text-stone-700 sm:text-lg">
           <p>
             <a href="https://phxdwntwn.com" class="font-medium text-ember-700 underline-offset-2 hover:underline">phxdwntwn.com</a> leads with the city code.
-            <strong class="text-dusk-950">dwntwnphx.com</strong> leads with the neighborhood. Same core. Different search path.
+            <strong class="text-dusk-950">dwntwnphx.com</strong> leads with the neighborhood. Same core. Different search path — twice the type-in surface for premium domain investors and downtown brands.
           </p>
           <p>
             Downtown Phoenix — DTPHX — is Roosevelt Row, Heritage Square, CityScape, light rail, Chase Field, and the warehouse districts.
@@ -59,80 +136,101 @@ const STREAM_SRC =
       </div>
     </section>
 
-    <section id="place" class="section-padding bg-white">
+    <section id="place" class="section-padding bg-white" aria-labelledby="place-heading">
       <div class="container-narrow">
         <div class="max-w-2xl">
-          <p class="text-[11px] font-semibold uppercase tracking-widestx text-ember-600">The core</p>
-          <h2 class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">Where the city actually walks</h2>
+          <p class="text-xs font-semibold uppercase tracking-widestx text-ember-600">The core</p>
+          <h2 id="place-heading" class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">Where the city actually walks</h2>
         </div>
         <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <article class="card">
             <h3 class="font-display text-xl font-bold text-dusk-950">Roosevelt Row</h3>
-            <p class="mt-2 text-sm leading-relaxed text-stone-600">Murals, galleries, and First Fridays — the creative street that made downtown a destination.</p>
+            <p class="mt-2 text-base leading-relaxed text-stone-600">Murals, galleries, and First Fridays — the creative street that made downtown a destination.</p>
           </article>
           <article class="card">
             <h3 class="font-display text-xl font-bold text-dusk-950">Heritage Square</h3>
-            <p class="mt-2 text-sm leading-relaxed text-stone-600">Rosson House, Victorian fabric, and the dining rooms that put Phoenix on a national map.</p>
+            <p class="mt-2 text-base leading-relaxed text-stone-600">Rosson House, Victorian fabric, and the dining rooms that put Phoenix on a national map.</p>
           </article>
           <article class="card">
             <h3 class="font-display text-xl font-bold text-dusk-950">Central / CityScape</h3>
-            <p class="mt-2 text-sm leading-relaxed text-stone-600">Mixed-use core, light-rail hub, events, and the office-to-residential conversion story.</p>
+            <p class="mt-2 text-base leading-relaxed text-stone-600">Mixed-use core, light-rail hub, events, and the office-to-residential conversion story.</p>
           </article>
           <article class="card">
             <h3 class="font-display text-xl font-bold text-dusk-950">Sports district</h3>
-            <p class="mt-2 text-sm leading-relaxed text-stone-600">Chase Field and Footprint Center — nights when downtown is the whole metro’s living room.</p>
+            <p class="mt-2 text-base leading-relaxed text-stone-600">Chase Field and Footprint Center — nights when downtown is the whole metro’s living room.</p>
           </article>
           <article class="card">
-            <h3 class="font-display text-xl font-bold text-dusk-950">Warehouse & innovation</h3>
-            <p class="mt-2 text-sm leading-relaxed text-stone-600">Adaptive reuse, studios, and the next layer of residential towers on old industrial blocks.</p>
+            <h3 class="font-display text-xl font-bold text-dusk-950">Warehouse &amp; innovation</h3>
+            <p class="mt-2 text-base leading-relaxed text-stone-600">Adaptive reuse, studios, and the next layer of residential towers on old industrial blocks.</p>
           </article>
           <article class="card">
             <h3 class="font-display text-xl font-bold text-dusk-950">Light rail</h3>
-            <p class="mt-2 text-sm leading-relaxed text-stone-600">The spine that makes downtown reachable without a parking hunt — from campus to the ballpark.</p>
+            <p class="mt-2 text-base leading-relaxed text-stone-600">The spine that makes downtown reachable without a parking hunt — from campus to the ballpark.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="uses" class="section-padding bg-stone-50">
+    <section id="uses" class="section-padding bg-stone-50" aria-labelledby="uses-heading">
       <div class="container-narrow grid gap-10 lg:grid-cols-2 lg:items-start">
         <div>
-          <p class="text-[11px] font-semibold uppercase tracking-widestx text-ember-600">Ideal uses</p>
-          <h2 class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">Who this name is for</h2>
-          <ul class="mt-8 space-y-4 text-sm text-stone-700 sm:text-base">
+          <p class="text-xs font-semibold uppercase tracking-widestx text-ember-600">Ideal uses</p>
+          <h2 id="uses-heading" class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">Who this premium domain is for</h2>
+          <ul class="mt-8 space-y-4 text-base text-stone-700 sm:text-lg">
             <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Infill real estate and downtown development</span></li>
             <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Arts, First Fridays, and cultural programming</span></li>
             <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Dining, nightlife, and local directories</span></li>
             <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Sports, hospitality, and event brands</span></li>
             <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember-500"></span><span>Downtown media and civic storytelling</span></li>
           </ul>
+          <div class="mt-8">
+            <a href="#acquisition" class="btn-outline" data-cta="uses-buy">Claim dwntwnphx.com — $50,000</a>
+          </div>
         </div>
-        <div class="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
+        <div class="rounded-xl border border-stone-200 bg-white p-6 sm:p-8" aria-label="Domain facts">
           <dl class="space-y-5">
             <div class="flex items-baseline justify-between gap-4 border-b border-stone-100 pb-4">
-              <dt class="text-sm text-stone-500">Reads as</dt>
+              <dt class="text-base text-stone-500">Reads as</dt>
               <dd class="font-display text-xl font-bold text-dusk-950">Downtown PHX</dd>
             </div>
             <div class="flex items-baseline justify-between gap-4 border-b border-stone-100 pb-4">
-              <dt class="text-sm text-stone-500">Place</dt>
+              <dt class="text-base text-stone-500">Place</dt>
               <dd class="font-display text-xl font-bold text-dusk-950">DTPHX</dd>
             </div>
             <div class="flex items-baseline justify-between gap-4 border-b border-stone-100 pb-4">
-              <dt class="text-sm text-stone-500">Sister</dt>
-              <dd class="font-display text-xl font-bold text-dusk-950">phxdwntwn.com</dd>
+              <dt class="text-base text-stone-500">Sister</dt>
+              <dd class="font-display text-xl font-bold text-dusk-950"><a href="https://phxdwntwn.com" class="hover:text-ember-600 hover:underline">phxdwntwn.com</a></dd>
             </div>
             <div class="flex items-baseline justify-between gap-4">
-              <dt class="text-sm text-stone-500">Offer</dt>
-              <dd class="font-display text-xl font-bold text-ember-600">$50,000</dd>
+              <dt class="text-base text-stone-500">Offer</dt>
+              <dd class="font-display text-xl font-bold text-ember-600">$50,000 USD</dd>
             </div>
           </dl>
         </div>
       </div>
     </section>
 
-    <section class="border-t border-stone-200 bg-white py-10 sm:py-12">
+    <section id="faq" class="section-padding bg-white" aria-labelledby="faq-heading">
+      <div class="container-narrow max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widestx text-ember-600">FAQ</p>
+        <h2 id="faq-heading" class="mt-3 font-display text-3xl font-bold text-dusk-950 sm:text-4xl">Buying questions, answered</h2>
+        <div class="mt-8 divide-y divide-stone-200 rounded-xl border border-stone-200">
+          {faqs.map((f) => (
+            <details class="group bg-white px-5 py-4 open:bg-stone-50 sm:px-6">
+              <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-dusk-950 sm:text-lg">
+                {f.q}
+                <span aria-hidden="true" class="text-ember-600 transition group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-2 pb-2 text-base leading-relaxed text-stone-600">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-stone-200 bg-white py-10 sm:py-12" aria-label="Notice">
       <div class="container-narrow text-center">
-        <p class="mx-auto max-w-2xl text-xs leading-relaxed text-stone-500 sm:text-sm">
+        <p class="mx-auto max-w-2xl text-sm leading-relaxed text-stone-500">
           Information presented is for demonstration and educational purposes only and does not constitute an offer of real estate or local services.
           The domain is offered at the stated asking price; terms are subject to a written agreement.
         </p>
@@ -141,4 +239,64 @@ const STREAM_SRC =
   </main>
 
   <Footer />
+
+  {/* Sticky mobile buy bar */}
+  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-stone-200 bg-white/95 p-3 backdrop-blur md:hidden" role="complementary" aria-label="Quick purchase">
+    <div class="flex items-center gap-3">
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-sm font-bold text-dusk-950">dwntwnphx.com</p>
+        <p class="text-sm font-semibold text-ember-600">$50,000 · escrow</p>
+      </div>
+      <a href="#acquisition" class="inline-flex min-h-12 flex-1 items-center justify-center rounded-md bg-dusk-950 px-5 text-base font-semibold text-white" data-cta="sticky-buy">Buy now</a>
+    </div>
+  </div>
+  <div class="h-[76px] md:hidden" aria-hidden="true"></div>
+
+  {/* Exit-intent lead capture */}
+  <dialog id="exit-intent" class="rounded-xl border border-stone-200 p-0 shadow-xl backdrop:bg-black/50" aria-labelledby="exit-heading">
+    <div class="max-w-sm p-6 sm:p-8">
+      <h2 id="exit-heading" class="font-display text-2xl font-bold text-dusk-950">Before you go — own DTPHX</h2>
+      <p class="mt-2 text-base text-stone-600">dwntwnphx.com is 1 of 1. Email us and we will hold your inquiry priority for 48 hours.</p>
+      <div class="mt-5 flex flex-col gap-3">
+        <a
+          href="mailto:sales@desertrich.com?subject=Priority%20hold%3A%20dwntwnphx.com"
+          class="btn-primary"
+          data-cta="exit-intent"
+        >Request 48-hour priority</a>
+        <button
+          type="button"
+          id="exit-close"
+          class="inline-flex min-h-12 items-center justify-center rounded-md px-4 py-3 text-base font-medium text-stone-500 hover:text-dusk-950"
+        >No thanks</button>
+      </div>
+    </div>
+  </dialog>
+  <script>
+    (() => {
+      const dlg = document.getElementById('exit-intent');
+      const closeBtn = document.getElementById('exit-close');
+      if (!(dlg instanceof HTMLDialogElement) || !closeBtn) return;
+      if (sessionStorage.getItem('dwntwnphx-exit') === '1') return;
+      let shown = false;
+      const show = () => {
+        if (shown) return;
+        shown = true;
+        sessionStorage.setItem('dwntwnphx-exit', '1');
+        try { dlg.showModal(); } catch { /* noop */ }
+      };
+      document.addEventListener('mouseout', (e) => {
+        if (e.clientY <= 0) show();
+      });
+      // Mobile fallback: show once after 75s of inactivity-free dwell if no CTA clicked
+      let ctaClicked = false;
+      document.querySelectorAll('[data-cta]').forEach((el) => {
+        el.addEventListener('click', () => { ctaClicked = true; }, { once: true });
+      });
+      setTimeout(() => { if (!ctaClicked) show(); }, 75000);
+      closeBtn.addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', (e) => {
+        if (e.target === dlg) dlg.close();
+      });
+    })();
+  </script>
 </Layout>

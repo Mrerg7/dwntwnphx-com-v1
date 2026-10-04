@@ -1,23 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { @apply bg-stone-50 text-dusk-900 font-sans antialiased; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-size-adjust: 100%; }
+  body { @apply bg-stone-50 text-dusk-900 font-sans antialiased; font-size: 16px; line-height: 1.6; overflow-x: clip; }
   ::selection { @apply bg-ember-500 text-white; }
+  img, video, iframe { max-width: 100%; }
+  :focus-visible { outline: 3px solid #c45c28; outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
 }
 
 @layer components {
   .container-narrow { @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8; }
   .section-padding { @apply py-14 sm:py-20 lg:py-24; }
   .btn-primary {
-    @apply inline-flex min-h-11 w-full items-center justify-center rounded-md bg-ember-500 px-7 py-3 text-sm font-semibold text-white transition hover:bg-ember-600 sm:w-auto;
+    @apply inline-flex min-h-12 w-full items-center justify-center rounded-md bg-ember-500 px-7 py-3.5 text-base font-semibold text-white transition hover:bg-ember-600 hover:-translate-y-px active:translate-y-0 sm:w-auto;
   }
   .btn-secondary {
-    @apply inline-flex min-h-11 w-full items-center justify-center rounded-md border border-white/30 bg-white/10 px-7 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20 sm:w-auto;
+    @apply inline-flex min-h-12 w-full items-center justify-center rounded-md border border-white/30 bg-white/10 px-7 py-3.5 text-base font-semibold text-white backdrop-blur transition hover:bg-white/20 sm:w-auto;
   }
-  .card { @apply rounded-xl border border-stone-200 bg-white p-6 shadow-sm sm:p-7; }
+  .btn-outline {
+    @apply inline-flex min-h-12 w-full items-center justify-center rounded-md border border-stone-300 bg-white px-7 py-3.5 text-base font-semibold text-dusk-950 transition hover:border-dusk-950 hover:-translate-y-px sm:w-auto;
+  }
+  .card { @apply rounded-xl border border-stone-200 bg-white p-6 shadow-sm transition duration-300 hover:shadow-md hover:-translate-y-0.5 sm:p-7; }
+  .fade-in { animation: fade-in 0.7s ease both; }
+  @keyframes fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+}
+
+@layer utilities {
+  .min-tap { min-height: 48px; min-width: 48px; }
 }
