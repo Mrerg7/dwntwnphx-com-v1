@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-11-10 — Fix Search Console "Page with redirect"
+
+### Cause
+Google flagged non-canonical aliases as **Page with redirect**: soft **307** hops from
+Assets (`/index.html` → `/`), plus multi-hop chains such as
+`http://www…/index.html` → `https://apex…/index.html` → `/`.
+
+### Fix
+- Worker now collapses host, scheme, and path into a **single 301** to
+  `https://dwntwnphx.com…` (www/http/`/index.html`/`/index`/`.html`/duplicate
+  slashes/trailing-slash gaps).
+- Soft Asset redirects are upgraded to absolute **301**s when they still appear.
+- Astro `trailingSlash: 'always'` so HTML, sitemap, and Worker agree.
+- `/404` and `/404.html` no longer look like indexable pages (301 → `/`;
+  error document is `noindex`; `not_found_handling = "404-page"`).
+- Published `/insights/` + `/insights/downtown-phoenix/` so the sitemap has
+  real 200 URLs beyond the homepage; linked from the opportunity section.
+
+### After deploy
+Resubmit `https://dwntwnphx.com/sitemap-index.xml` in Search Console and request
+indexing for `/` and `/insights/downtown-phoenix/`. www/http aliases will remain
+listed under "Page with redirect" by design — only the canonical should index.
+
 ## 2026-10-04 — Comprehensive optimization pass
 
 ### I. Technical foundation

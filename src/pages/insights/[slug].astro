@@ -1,0 +1,74 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('insights', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'insights'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const canonical = `https://dwntwnphx.com/insights/${post.slug}/`;
+const published = post.data.pubDate.toISOString();
+---
+
+<Layout title={`${post.data.title} | dwntwnphx.com`} description={post.data.description} canonical={canonical}>
+  <Header />
+  <main id="main" class="flex-1 bg-stone-50">
+    <article class="section-padding">
+      <div class="container-narrow max-w-3xl">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm text-stone-500">
+          <ol class="flex flex-wrap gap-1.5">
+            <li><a href="/" class="hover:text-ember-600">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/insights/" class="hover:text-ember-600">Insights</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-stone-700">{post.data.title}</li>
+          </ol>
+        </nav>
+
+        <p class="text-xs font-semibold uppercase tracking-widestx text-ember-600">Insight</p>
+        <h1 class="mt-3 font-display text-4xl font-bold text-dusk-950 sm:text-5xl">{post.data.title}</h1>
+        <p class="mt-4 text-lg text-stone-600">{post.data.description}</p>
+        <time class="mt-3 block text-sm text-stone-500" datetime={published}>
+          {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Phoenix' })}
+        </time>
+
+        <div class="prose prose-stone mt-10 max-w-none text-base leading-relaxed text-stone-700 sm:text-lg">
+          <Content />
+        </div>
+
+        <div class="mt-12 rounded-md border border-stone-200 bg-white p-6 sm:p-8">
+          <h2 class="font-display text-2xl font-bold text-dusk-950">Secure dwntwnphx.com</h2>
+          <p class="mt-2 text-stone-600">
+            Premium downtown-first DTPHX domain — offered at $50,000 via escrow.
+          </p>
+          <a href="/#acquisition" class="btn-primary mt-5 inline-flex" data-cta="insight-buy">Buy — $50,000</a>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": published,
+  "dateModified": published,
+  "mainEntityOfPage": canonical,
+  "author": { "@type": "Organization", "name": "Desert Rich" },
+  "publisher": { "@type": "Organization", "name": "Desert Rich", "url": "https://dwntwnphx.com" },
+})} />

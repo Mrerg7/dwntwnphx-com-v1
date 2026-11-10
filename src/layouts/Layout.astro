@@ -6,6 +6,8 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonical?: string;
+  /** Override robots when a page must stay out of the index (e.g. 404). */
+  robots?: string;
 }
 
 const POSTER =
@@ -16,6 +18,7 @@ const {
   description = 'Buy dwntwnphx.com — the premium downtown-first domain for Downtown Phoenix (DTPHX). Sister to phxdwntwn.com. Offered at $50,000 via secure escrow. Inquire today.',
   ogImage = POSTER,
   canonical = 'https://dwntwnphx.com/',
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1',
 } = Astro.props;
 
 const siteName = 'dwntwnphx.com';
@@ -33,7 +36,7 @@ const siteName = 'dwntwnphx.com';
       name="keywords"
       content="dwntwnphx.com for sale, buy downtown phoenix domain, premium domain names, DTPHX domain, downtown phoenix real estate domain, phxdwntwn.com, Roosevelt Row, CityScape Phoenix, investment domains"
     />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="robots" content={robots} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="canonical" href={canonical} />

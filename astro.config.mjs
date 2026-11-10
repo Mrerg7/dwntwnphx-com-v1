@@ -5,6 +5,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://dwntwnphx.com',
   output: 'static',
+  // One canonical shape in HTML + sitemap; Worker 301s the other variants.
+  trailingSlash: 'always',
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap({
